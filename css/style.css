@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+.content {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.content1,
+.content5 {
+  background: slategray;
+}
+.content2,
+.content6 {
+  background: forestgreen;
+}
+.content3 {
+  background: midnightblue;
+}
+.content4 {
+  background: indigo;
+}
+
+.left-right {
+  width: 163px;
+  height: 161px;
+  background: url("../image/img.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.right-left {
+  width: 163px;
+  height: 161px;
+  background: url("../image/img.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+h1 {
+  padding: 20px;
+  margin: 0;
+  text-align: center;
+  color: white;
+}
+
+.percentage {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
