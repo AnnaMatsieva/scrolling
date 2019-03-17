@@ -13,12 +13,12 @@ $(".section-block").each(function() {
   .addTo(ctrl);
 });
 
-// var wh = window.innerHeight;
-// new ScrollMagic.Scene({
-//   offset: wh*6
-// })
-// .setClassToggle("section#four", "is-active")
-// .addTo(ctrl);
+var wh = window.innerHeight;
+new ScrollMagic.Scene({
+  offset: wh*8
+})
+.setClassToggle("#two", "is-active")
+.addTo(ctrl);
 
 const tween = new TimelineMax({onUpdate:updatePercentage});
 const tween2 = new TimelineMax({onUpdate:updatePercentage2});
@@ -32,12 +32,12 @@ const percent = document.querySelector(".percentage span");
 const percent2 = document.querySelector(".percentage2 span");
 const percent3 = document.querySelector(".percentage3 span");
 
-tween.to(".left-right", 1, {left:"100%", xPercent:-50});
+tween.to(".left-right", 1, {left:"100%"});
 
 tween2.to(".right-left", 1, {right:"100%"});
 
-tween3.to(".first-block", 1, {top:"0"});
-tween3.to(".first-block", 1, {top:"100%"});
+tween3.to(".top-block", 1, {top:"100%"});
+tween3.to(".bottom-block", 1, {bottom:"100%"});
 
 const scene =   new ScrollMagic.Scene({
     triggerElement: ".pinDiv",
