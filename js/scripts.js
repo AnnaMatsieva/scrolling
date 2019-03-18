@@ -20,9 +20,13 @@ new ScrollMagic.Scene({
 .setClassToggle("#two", "is-active")
 .addTo(ctrl);
 
-const tween = new TimelineMax({onUpdate:updatePercentage});
-const tween2 = new TimelineMax({onUpdate:updatePercentage2});
-const tween3 = new TimelineMax({onUpdate:updatePercentage3});
+// const tween = new TimelineMax({onUpdate:updatePercentage});
+// const tween2 = new TimelineMax({onUpdate:updatePercentage2});
+// const tween3 = new TimelineMax({onUpdate:updatePercentage3});
+
+const tween = new TimelineMax();
+const tween2 = new TimelineMax();
+const tween3 = new TimelineMax();
 
 const controller = new ScrollMagic.Controller();
 const controller2 = new ScrollMagic.Controller();
@@ -66,17 +70,17 @@ const scene3 =   new ScrollMagic.Scene({
 .setTween(tween3)
 .addTo(controller3)
 
-function updatePercentage() {
-  percent.innerHTML = (tween.progress() *100 ).toFixed();
-}
+// function updatePercentage() {
+//   percent.innerHTML = (tween.progress() *100 ).toFixed();
+// }
 
-function updatePercentage2() {
-  percent2.innerHTML = (tween2.progress() *100 ).toFixed();
-}
+// function updatePercentage2() {
+//   percent2.innerHTML = (tween2.progress() *100 ).toFixed();
+// }
 
-function updatePercentage3() {
-  percent3.innerHTML = (tween3.progress() *100 ).toFixed();
-}
+// function updatePercentage3() {
+//   percent3.innerHTML = (tween3.progress() *100 ).toFixed();
+// }
 
 jQuery(document).ready(function($) {
   
