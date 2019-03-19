@@ -13,52 +13,59 @@
 	<style>
 		html,
 		body {
-		    width: 100%;
-		    height: 100%;
-		    margin: 0;
-		    padding: 0;
+	    width: 100%;
+	    height: 100%;
+	    margin: 0;
+	    padding: 0;
 		}
 
 		nav {
-		    position: fixed;
-		    top: 0;
-		    width: 100%;
-		    background: white;
-		    z-index: 100;
+	    position: fixed;
+	    top: 0;
+	    width: 100%;
+	    background: white;
+	    z-index: 100;
 		}
 
 		#contentArea {
-		    width: 100%;
-		    height: 100%;
-		    overflow: hidden;
+	    width: 100%;
+	    height: 100%;
 		}
 
 		section {
-		    position: relative;
-		    display: block;
-		    height: 100%;
+	    position: relative;
+	    display: block;
+	    height: 100%;
 		}
 
 		#section1,
-		#section2,
 		#section3,
-		#section4,
 		#section5 {
-		    width: 300vw;
+		  width: 300vw;
+		}
+
+		#section2,
+		#section4 {
+			width: 500vw;
 		}
 
 		article {
-		    position: relative;
-		    display: block;
-		    float: left;
-		    width: 100vw;
-		    height: 100%;
-		    text-align: center;
+	    position: relative;
+	    display: block;
+	    float: left;
+	    width: 100vw;
+	    height: 100%;
+	    text-align: center;
 		}
 
 		article h1 {
-		    padding: 30px;
-		    color: #000;
+	    padding: 30px;
+	    color: #fff;
+	    position: absolute;
+	    z-index: 10;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
 		}
 
 		.blue {
@@ -87,15 +94,19 @@
 		}
 
 		.stars {
-			content: "";
 			background: url(./image/stars.png);
-			animation: glareStars 10s infinite;
+			animation: glareStars 60s infinite;
+			height: 100vh;
 		}
 
 		@keyframes glareStars {
 		  100% {
-		  	transform: scale(1.1);
+		  	transform: scale(1.5);
 		  }
+		}
+
+		.mountains {
+			background: url(./image/mountains.jpg);
 		}
 
 		footer {
@@ -108,27 +119,30 @@
 	</style>
 </head>
 <body>
-	<nav>
+<!-- 	<nav>
     Go to section:
     <a href="#section1">1</a>
     <a href="#section2">2</a>
     <a href="#section3">3</a>
     <a href="#section4">4</a>
     <a href="#section5">5</a>
-	</nav>
+	</nav> -->
 	<div id="contentArea">
     <section id="section1" class="background">
-      <article id="article11" class="stars">
+      <article id="article11">
+      	<div class="stars"></div>
         <h1>Section 1 - Article 1</h1>
       </article>
-      <article id="article12" class="stars">
+      <article id="article12">
+      	<div class="stars"></div>
         <h1>Section 1 - Article 2</h1>
       </article>
-      <article id="article13" class="stars">
+      <article id="article13">
+      	<div class="stars"></div>
         <h1>Section 1 - Article 3</h1>
       </article>
     </section>
-    <section id="section2" class="bordeaux">
+    <section id="section2" class="mountains">
       <article id="article21">
         <h1>Section 2 - Article 1</h1>
       </article>
@@ -182,24 +196,24 @@
       </article>
     </section>
 	</div>
-	<footer>
+<!-- 	<footer>
 	    <a href="#" class="backLink">Back</a>
 	    <a href="#" class="nextLink">Next</a>
-	</footer>
+	</footer> -->
 	<script>
 		var horizontalController = new ScrollMagic.Controller();
 
 		var section1Tween = new TimelineMax()
 	    .to("#section1", 1, {
-	        x: "-33.3333333333%",
+	        x: "-33%",
 	        delay: 1
 	    })
 	    .to("#section1", 1, {
-	        x: "-66.6666666667%",
+	        x: "-66%",
 	        delay: 1
 	    })
 	    .to("#section1", 1, {
-	        x: "-66.6666666667%"
+	        x: "-100%"
 	    });
 
 		new ScrollMagic.Scene({
@@ -209,7 +223,7 @@
     })
     .setPin("#section1")
     .setTween(section1Tween)
-    .addIndicators()
+    // .addIndicators()
     .addTo(horizontalController);
 
 		var section2Tween = new TimelineMax()
@@ -230,7 +244,7 @@
 	        delay: 1
 	    })
 	    .to("#section2", 1, {
-	        x: "-80%"
+	        x: "-100%"
 	    });
 
 		new ScrollMagic.Scene({
@@ -240,20 +254,20 @@
     })
     .setPin("#section2")
     .setTween(section2Tween)
-    .addIndicators()
+    // .addIndicators()
     .addTo(horizontalController);
 
 		var section3Tween = new TimelineMax()
 	    .to("#section3", 1, {
-	        x: "-33.3333333333%",
+	        x: "-33%",
 	        delay: 1
 	    })
 	    .to("#section3", 1, {
-	        x: "-66.6666666667%",
+	        x: "-66%",
 	        delay: 1
 	    })
 	    .to("#section3", 1, {
-	        x: "-66.6666666667%"
+	        x: "-100%"
 	    });
 
 		new ScrollMagic.Scene({
@@ -263,7 +277,7 @@
     })
     .setPin("#section3")
     .setTween(section3Tween)
-    .addIndicators()
+    // .addIndicators()
     .addTo(horizontalController);
 
 		var section4Tween = new TimelineMax()
@@ -280,7 +294,7 @@
 	        delay: 1
 	    })
 	    .to("#section4", 1, {
-	        x: "-75%"
+	        x: "-100%"
 	    });
 
 		new ScrollMagic.Scene({
@@ -290,20 +304,20 @@
     })
     .setPin("#section4")
     .setTween(section4Tween)
-    .addIndicators()
+    // .addIndicators()
     .addTo(horizontalController);
 
 		var section5Tween = new TimelineMax()
 	    .to("#section5", 1, {
-	        x: "-33.3333333333%",
+	        x: "-33%",
 	        delay: 1
 	    })
 	    .to("#section5", 1, {
-	        x: "-66.6666666667%",
+	        x: "-66%",
 	        delay: 1
 	    })
 	    .to("#section5", 1, {
-	        x: "-66.6666666667%"
+	        x: "-100%"
 	    });
 
 		new ScrollMagic.Scene({
@@ -313,15 +327,15 @@
     })
     .setPin("#section5")
     .setTween(section5Tween)
-    .addIndicators()
+    // .addIndicators()
     .addTo(horizontalController);
 
-		$('nav a').click(function(e) {
-	    var id = $(this).attr("href");
-	    e.preventDefault();
-	    horizontalController.scrollTo(id);
-	    $(this).blur();
-		});
+		// $('nav a').click(function(e) {
+	 //    var id = $(this).attr("href");
+	 //    e.preventDefault();
+	 //    horizontalController.scrollTo(id);
+	 //    $(this).blur();
+		// });
 	</script>
 </body>
 </html>
