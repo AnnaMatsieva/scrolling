@@ -186,9 +186,9 @@ $(".stagger-tween").each(function() {
     y: 40,
     autoAlpha: 0,
     delay: 0,
-    ease: Power2.easeOut
+    ease: Power2.easeInOut
   },
-  0.3);
+  0.2);
 
   var scene2 = new ScrollMagic.Scene({
           triggerElement: this,

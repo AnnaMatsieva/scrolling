@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Scroll</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+	<style>
+		html,
+		body {
+		    width: 100%;
+		    height: 100%;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		nav {
+		    position: fixed;
+		    top: 0;
+		    width: 100%;
+		    background: white;
+		    z-index: 100;
+		}
+
+		#contentArea {
+		    width: 100%;
+		    height: 100%;
+		    overflow: hidden;
+		}
+
+		section {
+		    position: relative;
+		    display: block;
+		    height: 100%;
+		}
+
+		#section1,
+		#section2,
+		#section3,
+		#section4,
+		#section5 {
+		    width: 300vw;
+		}
+
+		article {
+		    position: relative;
+		    display: block;
+		    float: left;
+		    width: 100vw;
+		    height: 100%;
+		    text-align: center;
+		}
+
+		article h1 {
+		    padding: 30px;
+		    color: #000;
+		}
+
+		.blue {
+		    background-color: #3883d8;
+		}
+
+		.turquoise {
+		    background-color: #38ced7;
+		}
+
+		.green {
+		    background-color: #22d659;
+		}
+
+		.bordeaux {
+		    background-color: #953543;
+		}
+
+		.orange {
+		    background-color: orange;
+		}
+
+		.background {
+			background: url(./image/orig.jpg);
+			position: relative;
+		}
+
+		.stars {
+			content: "";
+			background: url(./image/stars.png);
+			animation: glareStars 10s infinite;
+		}
+
+		@keyframes glareStars {
+		  100% {
+		  	transform: scale(1.1);
+		  }
+		}
+
+		footer {
+		    position: fixed;
+		    bottom: 0;
+		    width: 100%;
+		    background: white;
+		    z-index: 100;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+    Go to section:
+    <a href="#section1">1</a>
+    <a href="#section2">2</a>
+    <a href="#section3">3</a>
+    <a href="#section4">4</a>
+    <a href="#section5">5</a>
+	</nav>
+	<div id="contentArea">
+    <section id="section1" class="background">
+      <article id="article11" class="stars">
+        <h1>Section 1 - Article 1</h1>
+      </article>
+      <article id="article12" class="stars">
+        <h1>Section 1 - Article 2</h1>
+      </article>
+      <article id="article13" class="stars">
+        <h1>Section 1 - Article 3</h1>
+      </article>
+    </section>
+    <section id="section2" class="bordeaux">
+      <article id="article21">
+        <h1>Section 2 - Article 1</h1>
+      </article>
+      <article id="article22">
+        <h1>Section 2 - Article 2</h1>
+      </article>
+      <article id="article23">
+        <h1>Section 2 - Article 3</h1>
+      </article>
+      <article id="article24">
+        <h1>Section 2 - Article 4</h1>
+      </article>
+      <article id="article25">
+        <h1>Section 2 - Article 5</h1>
+      </article>
+    </section>
+    <section id="section3" class="green">
+      <article id="article31">
+        <h1>Section 3 - Article 1</h1>
+      </article>
+      <article id="article32">
+        <h1>Section 3 - Article 2</h1>
+      </article>
+      <article id="article33">
+        <h1>Section 3 - Article 3</h1>
+      </article>
+    </section>
+    <section id="section4" class="turquoise">
+      <article id="article41">
+        <h1>Section 4 - Article 1</h1>
+      </article>
+      <article id="article42">
+        <h1>Section 4 - Article 2</h1>
+      </article>
+      <article id="article43">
+        <h1>Section 4 - Article 3</h1>
+      </article>
+      <article id="article44">
+        <h1>Section 4 - Article 4</h1>
+      </article>
+    </section>
+    <section id="section5" class="blue">
+      <article id="article51">
+        <h1>Section 5 - Article 1</h1>
+      </article>
+      <article id="article52">
+        <h1>Section 5 - Article 2</h1>
+      </article>
+      <article id="article53">
+        <h1>Section 5 - Article 3</h1>
+      </article>
+    </section>
+	</div>
+	<footer>
+	    <a href="#" class="backLink">Back</a>
+	    <a href="#" class="nextLink">Next</a>
+	</footer>
+	<script>
+		var horizontalController = new ScrollMagic.Controller();
+
+		var section1Tween = new TimelineMax()
+	    .to("#section1", 1, {
+	        x: "-33.3333333333%",
+	        delay: 1
+	    })
+	    .to("#section1", 1, {
+	        x: "-66.6666666667%",
+	        delay: 1
+	    })
+	    .to("#section1", 1, {
+	        x: "-66.6666666667%"
+	    });
+
+		new ScrollMagic.Scene({
+        triggerElement: "#section1",
+        triggerHook: "onLeave",
+        duration: "400%"
+    })
+    .setPin("#section1")
+    .setTween(section1Tween)
+    .addIndicators()
+    .addTo(horizontalController);
+
+		var section2Tween = new TimelineMax()
+	    .to("#section2", 1, {
+	        x: "-20%",
+	        delay: 1
+	    })
+	    .to("#section2", 1, {
+	        x: "-40%",
+	        delay: 1
+	    })
+	    .to("#section2", 1, {
+	        x: "-60%",
+	        delay: 1
+	    })
+	    .to("#section2", 1, {
+	        x: "-80%",
+	        delay: 1
+	    })
+	    .to("#section2", 1, {
+	        x: "-80%"
+	    });
+
+		new ScrollMagic.Scene({
+        triggerElement: "#section2",
+        triggerHook: "onLeave",
+        duration: "600%"
+    })
+    .setPin("#section2")
+    .setTween(section2Tween)
+    .addIndicators()
+    .addTo(horizontalController);
+
+		var section3Tween = new TimelineMax()
+	    .to("#section3", 1, {
+	        x: "-33.3333333333%",
+	        delay: 1
+	    })
+	    .to("#section3", 1, {
+	        x: "-66.6666666667%",
+	        delay: 1
+	    })
+	    .to("#section3", 1, {
+	        x: "-66.6666666667%"
+	    });
+
+		new ScrollMagic.Scene({
+        triggerElement: "#section3",
+        triggerHook: "onLeave",
+        duration: "400%"
+    })
+    .setPin("#section3")
+    .setTween(section3Tween)
+    .addIndicators()
+    .addTo(horizontalController);
+
+		var section4Tween = new TimelineMax()
+	    .to("#section4", 1, {
+	        x: "-25%",
+	        delay: 1
+	    })
+	    .to("#section4", 1, {
+	        x: "-50%",
+	        delay: 1
+	    })
+	    .to("#section4", 1, {
+	        x: "-75%",
+	        delay: 1
+	    })
+	    .to("#section4", 1, {
+	        x: "-75%"
+	    });
+
+		new ScrollMagic.Scene({
+        triggerElement: "#section4",
+        triggerHook: "onLeave",
+        duration: "500%"
+    })
+    .setPin("#section4")
+    .setTween(section4Tween)
+    .addIndicators()
+    .addTo(horizontalController);
+
+		var section5Tween = new TimelineMax()
+	    .to("#section5", 1, {
+	        x: "-33.3333333333%",
+	        delay: 1
+	    })
+	    .to("#section5", 1, {
+	        x: "-66.6666666667%",
+	        delay: 1
+	    })
+	    .to("#section5", 1, {
+	        x: "-66.6666666667%"
+	    });
+
+		new ScrollMagic.Scene({
+        triggerElement: "#section5",
+        triggerHook: "onLeave",
+        duration: "400%"
+    })
+    .setPin("#section5")
+    .setTween(section5Tween)
+    .addIndicators()
+    .addTo(horizontalController);
+
+		$('nav a').click(function(e) {
+	    var id = $(this).attr("href");
+	    e.preventDefault();
+	    horizontalController.scrollTo(id);
+	    $(this).blur();
+		});
+	</script>
+</body>
+</html>
